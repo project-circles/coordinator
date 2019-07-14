@@ -8,4 +8,4 @@ The coordinator is written in Rust. To run an coordinator server, first download
 rustup override set nightly
 ```
 
-The coordinator server utilizes the [Rocket](https://rocket.rs/) web framework which requires the latest nightly toolchain. Now you should be able to start a server locally by running `cargo run`. This command should spin up a web server with an interface in your local [environment](http://localhost:8000).
+The coordinator server utilizes the [Rocket](https://rocket.rs/) web framework which requires the latest nightly toolchain. Now you should be able to start a server locally by running `cargo run`. This command should spin up a web server with an interface on your local [machine](http://localhost:8000).
