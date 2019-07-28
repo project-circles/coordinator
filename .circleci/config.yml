@@ -23,4 +23,4 @@ jobs:
             rustup run nightly cargo build --all --release
       - run: 
           name: Test
-          command: cargo test --all --release
+          command: rustup run nightly cargo test --all --release
