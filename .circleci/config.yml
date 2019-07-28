@@ -18,7 +18,8 @@ jobs:
             cargo fmt -- --check
       - run: 
           name: Build
-          command: 
+          command: |
+            rustup toolchain install nightly
             cargo build --all --release
       - run: 
           name: Test
