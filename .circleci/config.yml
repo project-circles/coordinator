@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: rust:nightly
+      - image: rust:1
     steps:
       - checkout
       - run: 
