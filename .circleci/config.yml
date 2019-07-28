@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: rust:1
+    steps:
+      - checkout
+      - run: 
+          name: Lint
+          command: |
+            rustup toolchain install nightly-2019-07-19
+            rustup component add clippy --toolchain nightly-2019-07-19-x86_64-unknown-linux-gnu
+            cargo +nightly-2019-07-19 clippy
+      - run: 
+          name: Formatted
+          command: |
+            rustup component add rustfmt-preview
+            cargo fmt -- --check
+      - run: 
+          name: Build
+          command: |
+            rustup toolchain install nightly
+            rustup run nightly cargo build --all --release
+      - run: 
+          name: Test
+          command: rustup run nightly cargo test --all --release
