@@ -1,4 +1,4 @@
-//! This crate encloses the core coordinator web application. 
+//! This crate encloses the core coordinator web application.
 #![deny(warnings)]
 #![feature(proc_macro_hygiene, decl_macro)]
 
