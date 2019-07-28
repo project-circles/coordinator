@@ -20,7 +20,7 @@ jobs:
           name: Build
           command: |
             rustup toolchain install nightly
-            cargo build --all --release
+            cargo build nightly --all --release
       - run: 
           name: Test
           command: cargo test --all --release
