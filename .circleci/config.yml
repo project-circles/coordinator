@@ -8,8 +8,9 @@ jobs:
       - run: 
           name: Lint
           command: |
-            rustup component add clippy
-            cargo clippy
+            rustup toolchain install nightly-2019-07-19
+            rustup component add clippy --toolchain nightly-2019-07-19-x86_64-unknown-linux-gnu
+            cargo +nightly-2019-07-19 clippy
       - run: 
           name: Formatted
           command: |
@@ -17,8 +18,7 @@ jobs:
             cargo fmt -- --check
       - run: 
           name: Build
-          command: | 
-            rustup toolchain install nightly
+          command: 
             cargo build --all --release
       - run: 
           name: Test
