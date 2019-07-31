@@ -7,8 +7,8 @@ extern crate rocket;
 
 use failure::Error;
 use std::thread;
-use websocket::Message;
 use websocket::sync::Server;
+use websocket::Message;
 
 #[get("/")]
 /// Root web page for the coordinator.
@@ -22,7 +22,7 @@ fn main() -> Result<(), Error> {
     thread::spawn(move || {
         rocket::ignite().mount("/", routes![index]).launch();
     });
-    
+
     // Start websocket server where node communication occurs.
     let coordinator = Server::bind("0.0.0.0:9090")?;
 
@@ -32,8 +32,10 @@ fn main() -> Result<(), Error> {
             println!("Client has connected");
             let mut client = connection.accept().expect("Error: Connection failed");
             let message = Message::text("Hello, client!");
-            client.send_message(&message).expect("Error: Message send failed");
+            client
+                .send_message(&message)
+                .expect("Error: Message send failed");
         });
-    }    
+    }
     Ok(())
 }
