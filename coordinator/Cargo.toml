@@ -5,4 +5,6 @@ authors = ["William Greer <wgreer184@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+failure = "0.1.5"
 rocket = "0.4.2"
+websocket = "0.23.0"
