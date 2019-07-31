@@ -10,6 +10,9 @@ use std::thread;
 use websocket::sync::Server;
 use websocket::Message;
 
+// String that holds address that websocket binds to.
+static WEBSOCKET_ADDRESS: &str = "0.0.0.0:9090";
+
 #[get("/")]
 /// Root web page for the coordinator.
 fn index() -> &'static str {
@@ -24,7 +27,7 @@ fn main() -> Result<(), Error> {
     });
 
     // Start websocket server where node communication occurs.
-    let coordinator = Server::bind("0.0.0.0:9090")?;
+    let coordinator = Server::bind(WEBSOCKET_ADDRESS)?;
 
     // Spawn a thread for each websocket connection.
     for connection in coordinator.filter_map(Result::ok) {
